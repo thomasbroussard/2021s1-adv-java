@@ -1,5 +1,7 @@
 package fr.epita.neo4j.test;
 
+import java.security.Policy.Parameters;
+
 import org.junit.Test;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
@@ -9,6 +11,7 @@ import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Transaction;
 import org.neo4j.driver.Value;
+import org.neo4j.driver.Values;
 
 public class Neo4JConnectionsTest {
 
@@ -18,12 +21,12 @@ public class Neo4JConnectionsTest {
 		Session session = driver.session();
 		Transaction tx = session.beginTransaction();
 		
-		Result result = tx.run("MATCH (n) RETURN n");
+		Result result = tx.run("MATCH (n:User{name:$someone}) RETURN n", Values.parameters("someone", "Annie"));
 		while(result.hasNext()) {
-			Record node = result.next();
-			Value value = node.get("n");
-			Value name = value.get("name");
-			System.out.println(name);
+			Record record = result.next();
+			Value value = record.get("n");
+			System.out.println(value.asMap());
+			
 		}
 		tx.commit();
 		session.close();
