@@ -6,57 +6,21 @@ import java.sql.SQLException;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.sql.DataSource;
 
 import fr.epita.quiz.datamodel.Question;
 
 public class QuestionDAO {
 	
-	
-//	@Inject
-//	@Named("db.pg.url")
-	String url;
-//	
-//	@Inject
-//	@Named("db.pg.username")
-	String username;
-	
-//	@Inject
-//	@Named("db.pg.password")
-	String pwd;
-	
-	
-	public String getUrl() {
-		return url;
+
+	DataSource datasource;
+
+	public void setDatasource(DataSource datasource) {
+		this.datasource = datasource;
 	}
-
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getPwd() {
-		return pwd;
-	}
-
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
 
 	public void createQuestion(Question question) throws SQLException {
-		Connection connection = DriverManager.getConnection(url,username,pwd);
+		Connection connection = this.datasource.getConnection();
 		
 	}
 

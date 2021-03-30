@@ -29,7 +29,7 @@ public class TestSpring {
 	public void firstTest() {
 		Assert.assertTrue(query != null);
 		System.out.println(query);
-		Assert.assertNotNull(dao.getUrl());
+	
 	}
 
 }
