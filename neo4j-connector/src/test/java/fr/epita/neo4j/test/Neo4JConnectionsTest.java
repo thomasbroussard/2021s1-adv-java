@@ -1,23 +1,24 @@
 package fr.epita.neo4j.test;
 
-import java.security.Policy.Parameters;
-
 import org.junit.Test;
-import org.neo4j.driver.AuthTokens;
-import org.neo4j.driver.Driver;
-import org.neo4j.driver.GraphDatabase;
-import org.neo4j.driver.Record;
-import org.neo4j.driver.Result;
-import org.neo4j.driver.Session;
-import org.neo4j.driver.Transaction;
-import org.neo4j.driver.Value;
-import org.neo4j.driver.Values;
+
+import fr.epita.users.datamodel.User;
+import fr.epita.users.services.data.Neo4jUserDAO;
 
 public class Neo4JConnectionsTest {
 
+	
+	static {
+		System.setProperty("conf.location", "src/test/resources/application.properties");
+	}
+	
+	
 	@Test
 	public void testFirstConnection() {
-		searchUser();
+		
+		
+		Neo4jUserDAO dao = new Neo4jUserDAO();
+		dao.searchUsers(new User());
 	}
 
 	

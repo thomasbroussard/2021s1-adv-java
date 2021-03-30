@@ -15,14 +15,14 @@ import org.neo4j.driver.Value;
 import org.neo4j.driver.Values;
 
 import fr.epita.users.datamodel.User;
+import fr.epita.users.services.Configuration;
 
 public class Neo4jUserDAO {
 
-	private static final String USERNAME = "neo4j";
-	private static final String SERVER_URL = "bolt://localhost:7687";
 
-	private List<User> searchUsers(User user) {
-		Driver driver = GraphDatabase.driver(SERVER_URL, AuthTokens.basic(USERNAME, USERNAME));
+	public List<User> searchUsers(User user) {
+		Configuration conf = Configuration.getInstance();
+		Driver driver = GraphDatabase.driver(conf.getUrl(), AuthTokens.basic(conf.getDatabaseUserName(), conf.getDatabasePassword()));
 		Session session = driver.session();
 		Transaction tx = session.beginTransaction();
 

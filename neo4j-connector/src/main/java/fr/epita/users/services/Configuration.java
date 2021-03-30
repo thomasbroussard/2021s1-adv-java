@@ -15,7 +15,7 @@ public class Configuration {
 	private Configuration() {
 		this.properties = new Properties();
 		try {
-			this.properties.load(new FileInputStream(new File("src/test/resources/config/application.properties")));
+			this.properties.load(new FileInputStream(new File(System.getProperty("conf.location"))));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
