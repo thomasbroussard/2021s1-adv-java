@@ -2,6 +2,8 @@ package fr.epita.quiz;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.inject.Inject;
@@ -12,6 +14,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import fr.epita.quiz.datamodel.Question;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +28,7 @@ public class TestPGSQLConnection {
 	
 	@Test
 	public void testConnection() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","postgres");
+		Connection connection = ds.getConnection();
 		String schema = connection.getSchema();
 		Assert.assertNotNull(schema);
 		connection.close();
@@ -36,6 +40,9 @@ public class TestPGSQLConnection {
 		String schema = connection.getSchema();
 		Assert.assertNotNull(schema);
 		connection.close();
+		
+		
+	
 	}
 	
 	

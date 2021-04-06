@@ -19,17 +19,15 @@
 		<constructor-arg><value>postgres</value></constructor-arg>
 	</bean>
 	<bean id="db.pg.url" class="java.lang.String">
-		<constructor-arg><value>jdbc:postgresql://localhost:5432/postgres</value></constructor-arg>
+		<constructor-arg><value>jdbc:postgresql://localhost:5432/2020s1-quiz-database</value></constructor-arg>
 	</bean>
 	
 	
-	<bean id="questionDAO" class="fr.epita.quiz.services.QuestionDAO">
-		<property name="datasource" ref="dataSourceBean" />
-	</bean>
+	<bean id="questionDAO" class="fr.epita.quiz.services.QuestionDAO" />
 
 	<bean id="dataSourceBean" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost:5432/postgres" />
+			<property name="url" value="jdbc:postgresql://localhost:5432/2020s1-quiz-database" />
 			<property name="username" value="postgres" />
 			<property name="password" value="postgres" />
 	</bean>
