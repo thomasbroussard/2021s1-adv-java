@@ -44,7 +44,7 @@ public class QuestionDAO {
 			Integer id = results.getInt("id");
 			Integer difficulty = results.getInt("difficulty");
 			
-			Question questionInstance = new Question("question");
+			Question questionInstance = new Question(question);
 			questionInstance.setDifficulty(difficulty);
 			questionInstance.setId(id);
 			list.add(questionInstance);
