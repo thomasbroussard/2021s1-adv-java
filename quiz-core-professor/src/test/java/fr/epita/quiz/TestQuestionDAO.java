@@ -1,13 +1,12 @@
 package fr.epita.quiz;
 
-import java.sql.SQLException;
-
 import javax.inject.Inject;
 
 import org.junit.Test;
 
 import fr.epita.quiz.datamodel.Question;
-import fr.epita.quiz.services.QuestionDAO;
+import fr.epita.quiz.services.data.api.DataAccessException;
+import fr.epita.quiz.services.data.impl.QuestionDAO;
 
 public class TestQuestionDAO {
 	
@@ -16,9 +15,9 @@ public class TestQuestionDAO {
 	 
 	 
 	 @Test
-	 public void testSearch() throws SQLException {
+	 public void testSearch() throws DataAccessException {
 		 
-		 dao.searchQuestion(new Question("Java"));
+		 dao.search(new Question("Java"));
 		 
 	 }
 

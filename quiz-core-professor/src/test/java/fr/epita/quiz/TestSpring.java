@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.epita.quiz.services.QuestionDAO;
+import fr.epita.quiz.services.data.impl.QuestionDAO;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
