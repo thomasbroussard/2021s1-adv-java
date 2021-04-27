@@ -37,15 +37,14 @@
 	</bean>
 
 
-	<bean id="questionDAO" class="fr.epita.quiz.services.data.impl.DummyQuestionDAO" />
+	<bean id="questionDAO" class="fr.epita.quiz.services.data.impl.QuestionJPAEMDAO" />
 
 	<!-- <bean id="dataSourceBean" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<property name="driverClassName" value="org.postgresql.Driver" /> <property 
 		name="url" value="jdbc:postgresql://localhost:5432/2020s1-quiz-database" 
 		/> <property name="username" value="postgres" /> <property name="password" 
 		value="postgres" /> </bean> -->
-	<bean id="questioDAO"
-		class="fr.epita.quiz.services.data.impl.DummyQuestionDAO" />
+	
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
