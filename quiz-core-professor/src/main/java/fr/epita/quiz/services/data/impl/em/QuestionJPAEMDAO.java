@@ -1,4 +1,4 @@
-package fr.epita.quiz.services.data.impl;
+package fr.epita.quiz.services.data.impl.em;
 
 import java.util.List;
 
@@ -12,36 +12,13 @@ import fr.epita.quiz.services.data.api.DataAccessException;
 import fr.epita.quiz.services.data.api.IQuestionDAO;
 
 @Transactional(value = Transactional.TxType.REQUIRED)
-public class QuestionJPAEMDAO implements IQuestionDAO {
+public class QuestionJPAEMDAO extends AbstractGenericDAO<Question> implements IQuestionDAO {
 
-	@PersistenceContext
-	EntityManager em;
 	
 	@Override
 	public List<Question> search(Question questionQBE) throws DataAccessException {
 		TypedQuery<Question> query = em.createQuery("from Question", Question.class);
 		return query.getResultList();
 	}
-
-	@Override
-	public void update(Question question) throws DataAccessException {
-		// TODO Auto-generated method stub
-		em.merge(question);
-		
-	}
-
-	@Override
-	public void delete(Question question) throws DataAccessException {
-		// TODO Auto-generated method stub
-		em.remove(question);
-	}
-
-	@Override
-	public void create(Question question) throws DataAccessException {
-		// TODO Auto-generated method stub
-		em.persist(question);
-	}
-	
-	
 
 }
