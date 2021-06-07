@@ -1,4 +1,4 @@
-package com.example.demo;
+package fr.epita.quiz.web;
 
 import java.net.URI;
 import java.util.List;
@@ -25,9 +25,7 @@ public class TestController {
 
 	@GetMapping(path = BASE_PATH + "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Question>> find(@PathVariable("id") String id) throws DataAccessException {
-		Question criterion = new Question("");
-		criterion.setId(Integer.valueOf(id));
-		List<Question> search = dao.search(criterion);
+		
 		return ResponseEntity.ok(search);
 
 	}
