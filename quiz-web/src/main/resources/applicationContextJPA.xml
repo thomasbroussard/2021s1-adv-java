@@ -45,18 +45,22 @@
 			expression=".*JPAEMDAO" />
 		<context:include-filter type="regex"
 			expression=".*DataService" />
-			
-	</context:component-scan>
-	<!-- <bean id="dataSourceBean" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="org.postgresql.Driver" /> <property 
-		name="url" value="jdbc:postgresql://localhost:5432/2020s1-quiz-database" 
-		/> <property name="username" value="postgres" /> <property name="password" 
-		value="postgres" /> </bean> -->
 
+	</context:component-scan>
+<!-- 	<bean id="dataSourceBean"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/2020s1-quiz-database" />
+		<property name="username" value="postgres" />
+		<property name="password" value="postgres" />
+	</bean>
+ -->
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="url"
+		<property name="url"	
 			value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"></property>
 		<property name="username" value="test"></property>
 		<property name="password" value="test"></property>
