@@ -44,23 +44,14 @@
 		<context:include-filter type="regex"
 			expression=".*JPAEMDAO" />
 	</context:component-scan>
-<!-- 	<bean id="dataSourceBean"
+	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url" value="jdbc:postgresql://localhost:5432/2020s1-quiz-database" />
 		<property name="username" value="postgres" />
 		<property name="password" value="postgres" />
-	</bean> -->
+	</bean> 
 
-
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="url"
-			value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"></property>
-		<property name="username" value="test"></property>
-		<property name="password" value="test"></property>
-		<property name="driverClassName" value="org.h2.Driver"></property>
-	</bean>
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean"
@@ -69,7 +60,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.connection.autocommit">false</prop>
 			</props>
 		</property>
@@ -78,7 +69,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="jpaProperties" ref="properties" />
+		<property name="jpaProperties" ref="hibernateProperties" />
 		<property name="packagesToScan"	value="fr.epita.quiz.datamodel" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
