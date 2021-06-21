@@ -1,3 +1,4 @@
+<%@page import="java.sql.Connection"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
@@ -13,6 +14,9 @@
 <body>
 <%=session.getId()%> 
 <%List<Enumeration<String>> customers = Arrays.asList(request.getParameterNames()); 
+
+Connection connection = DriverManager.getConnection("jdbc://", "","");
+connection.prepareStatement(sql);
 
 //List<String> customers = Arrays.asList("A","B","C");
 for (Enumeration<String> customer : customers){
