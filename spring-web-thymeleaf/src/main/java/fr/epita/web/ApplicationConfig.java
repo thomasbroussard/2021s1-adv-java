@@ -63,7 +63,7 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
 //	
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index.html").setViewName("index");
+        registry.addViewController("/index.html").setViewName("landingpage");
     }
 
 
